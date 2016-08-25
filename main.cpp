@@ -9,6 +9,7 @@
 #include "studente.h"
 #include "database.h"
 #include "basewindow.h"
+#include "c_mainwindow.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -17,6 +18,13 @@ int main(int argc, char *argv[])
 
     DataBase primodb;
     mainwindow m(&primodb);
+
+
+    c_mainwindow controller(&primodb,&m);
+
+
+
+
     //m.show();
 
 
@@ -35,9 +43,10 @@ int main(int argc, char *argv[])
         cout<<endl<<endl<<"Jack ha completato "<<lezioniJack.oreMasterPPL()<<" ore ppl master";
 
         primodb.addDB(puntJAK);*/
-        primodb.close();
 
-        cout<<endl<<endl;
+    //primodb.close();
+
+    cout<<endl<<endl;
 
     return a.exec();
 }

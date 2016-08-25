@@ -14,7 +14,7 @@ void GPL::saveLezione(QXmlStreamWriter& xmlWriter)const{
     QString codiceDB = QString::number(getId());
     QString istruttoreDB = getIstruttore() ? "1" : "0";
     QString minutiDB = QString::number(getMinuti());
-    QString trainiDB = getTraini() ? "1" : "0";
+    QString trainiDB = QString::number(getTraini());
     QString pagataDB = getPagata() ? "1" : "0";
 
     xmlWriter.writeTextElement("id", codiceDB); //<id> </id>

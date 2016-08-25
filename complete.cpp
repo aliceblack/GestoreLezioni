@@ -10,6 +10,8 @@ Complete::iterator::iterator(){}
 
 Complete::iterator::iterator(Lezione ** x) : punt(x) {}
 
+Complete::iterator::iterator(const iterator& cit) : punt(cit.punt) {}
+
 Lezione* Complete::iterator::operator*(){
     return *punt;
 }
@@ -147,4 +149,25 @@ bool Complete::oreVDS(){
 
 bool Complete::minAcrobPPL(){
     return oreAcrobaticoPPL()>=10;
+}
+
+void Complete::remove(int idLez){
+    for(vector<Lezione*>::iterator it=lezioniComp.begin(); it!=lezioniComp.end(); ++it)
+    {
+        if( (*it)->getId()==idLez )
+        {
+            lezioniComp.erase(it);
+        }
+    }
+}
+
+void Complete::paga(int idLez){
+    for(Complete::iterator it=begin(); it!=end(); ++it)
+    {
+        if( (*it)->getId()==idLez )
+        {
+            (*it)->setPagata();
+        }
+    }
+
 }

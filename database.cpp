@@ -11,7 +11,7 @@ void DataBase::load(){
     QString studente, velivolo; int tipo=0, id, minuti=0,  traini=0;
     bool istruttore, pagata, acrobatico;
 
-    QFile file("../ScuolaVoloPadova/DataBase.xml");
+    QFile file("../GestoreLezioni/DataBase.xml");
     if (!file.open(QFile::ReadOnly | QFile::Text))  std::cout << "Errore: Impossibile leggere il file"<< std::endl;
     QXmlStreamReader xmlReader(&file);
     xmlReader.readNext();
@@ -107,7 +107,7 @@ void DataBase::load(){
 }
 
 void DataBase::close(){
-    QFile file("../ScuolaVoloPadova/DataBase.xml");
+    QFile file("../GestoreLezioni/DataBase.xml");
     file.open(QIODevice::WriteOnly);
     QXmlStreamWriter xmlWriter(&file);
     xmlWriter.setAutoFormatting(true);
@@ -126,4 +126,12 @@ void DataBase::close(){
 
 void DataBase::addDB(Lezione* lez){
     db.add(lez);
+}
+
+void DataBase::removeDB(int id){
+    db.remove(id);
+}
+
+void DataBase::pagaDB(int id){
+    db.paga(id);
 }

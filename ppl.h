@@ -1,6 +1,5 @@
 #ifndef PPL_H
 #define PPL_H
-//#include <iostream>
 #include "lezione.h"
 #include "motore.h"
 

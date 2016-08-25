@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     basewindow.cpp \
     mainwindow.cpp \
     lessonstable.cpp \
-    studentstable.cpp
+    studentstable.cpp \
+    c_mainwindow.cpp
 
 HEADERS  += \
     lezione.h \
@@ -38,7 +39,8 @@ HEADERS  += \
     basewindow.h \
     mainwindow.h \
     lessonstable.h \
-    studentstable.h
+    studentstable.h \
+    c_mainwindow.h
 
 FORMS    += mainwindow.ui
 

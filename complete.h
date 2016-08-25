@@ -18,6 +18,7 @@ public:
     public:
         iterator();
         iterator(Lezione**);
+        iterator(const iterator&);
         Lezione* operator*();
         iterator& operator++();
         iterator operator++(int);
@@ -27,6 +28,8 @@ public:
 
     Complete();
     void add(Lezione*);
+    void remove(int);
+    void paga(int);
     iterator begin();
     iterator end();
     Lezione* operator[](iterator);

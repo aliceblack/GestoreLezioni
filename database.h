@@ -1,6 +1,5 @@
 #ifndef DATABASE_H
 #define DATABASE_H
-
 #include<iostream>
 #include<QFile>
 #include<QXmlStreamWriter>
@@ -20,13 +19,13 @@ class DataBase{
 private:
     Complete db;
 public:
-    //Complete db; //private
     DataBase();
     ~DataBase();
     void load();
     void close();
     void addDB(Lezione*);
-    //void removeDB(int);
+    void removeDB(int);
+    void pagaDB(int);
     Complete::iterator beginDB();
     Complete::iterator endDB();
 };

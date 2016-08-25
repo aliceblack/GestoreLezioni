@@ -22,7 +22,7 @@ public:
     bool getIstruttore()const;
     int getMinuti()const;
     bool getPagata()const;
-    void setPagata();      //resetPagata()
+    void setPagata();
     virtual double costoLezione()const=0;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const=0;
     //distruttore

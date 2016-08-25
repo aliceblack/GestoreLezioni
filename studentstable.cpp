@@ -14,7 +14,8 @@ studentstable::studentstable(DataBase* DB) : basewindow(DB) {
     QVBoxLayout* tableLayout=new QVBoxLayout();
     tableLayout->addWidget(tableWidget);
 
-    tableWidget->setFixedSize(1200,500);
+
+    //tableWidget->setFixedSize(1200,500);
 
     Complete::iterator it;
     QVector<QString> studenti;

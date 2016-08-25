@@ -28,6 +28,6 @@ bool Lezione::getPagata()const{
     return pagata;
 }
 
-void Lezione::setPagata(){//resetPagata() per modifiche
+void Lezione::setPagata(){
     pagata=true;
 }

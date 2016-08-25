@@ -84,10 +84,11 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
         tableWidget->setItem(n,4,minutiItem);
         tableWidget->setItem(n,5,pagamentoItem);
         tableWidget->setItem(n,8,costoItem);
-        tableWidget->item(n,8)->setFlags(!Qt::ItemIsEditable);
+        //tableWidget->item(n,8)->setFlags(!Qt::ItemIsEditable);
 
         ++n;
     }
+    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     setLayout(tableLayout);
 
 }

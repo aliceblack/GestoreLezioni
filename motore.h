@@ -1,6 +1,5 @@
 #ifndef MOTORE_H
 #define MOTORE_H
-
 #include "lezione.h"
 
 class Motore: public Lezione{
