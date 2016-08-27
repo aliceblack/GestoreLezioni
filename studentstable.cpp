@@ -118,7 +118,7 @@ void studentstable::updateView(){
         QTableWidgetItem *minGPLItem = new QTableWidgetItem(minimoGPL);
         tableWidget->setItem(n,11,minGPLItem);
 
-        QString acrobPPL = QString::number(lezioniStudente.minAcrobPPL());
+        QString acrobPPL = QString::number(lezioniStudente.oreAcrobaticoPPL());
         QTableWidgetItem *acrobPPLItem = new QTableWidgetItem(acrobPPL);
         tableWidget->setItem(n,12,acrobPPLItem);
 
