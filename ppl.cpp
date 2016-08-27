@@ -4,9 +4,6 @@ PPL::PPL(int ti, int id, QString st,  QString vel, bool ist, int m, bool pag, bo
 
 PPL::~PPL(){}
 
-//bool PPL::getAcrobatico()const{
-//    return acrobatico;
-//}
 
 double PPL::costoBenzina()const{
     return getMinuti()*stimaConsumo+5*getAcrobatico();

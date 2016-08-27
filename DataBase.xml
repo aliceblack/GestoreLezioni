@@ -552,4 +552,23 @@
         <pagata>0</pagata>
         <acrobatico>1</acrobatico>
     </lezione>
+    <lezione>
+        <id>58</id>
+        <tipo>2</tipo>
+        <studente>002</studente>
+        <velivolo>n899</velivolo>
+        <istruttore>1</istruttore>
+        <minuti>60</minuti>
+        <pagata>0</pagata>
+    </lezione>
+    <lezione>
+        <id>59</id>
+        <tipo>3</tipo>
+        <studente>003</studente>
+        <velivolo>n5657</velivolo>
+        <istruttore>1</istruttore>
+        <minuti>60</minuti>
+        <pagata>0</pagata>
+        <traini>1</traini>
+    </lezione>
 </database>

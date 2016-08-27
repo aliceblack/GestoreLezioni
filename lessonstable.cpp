@@ -34,9 +34,6 @@ void lessonstable::updateView(){
         int minuti = (*it)->getMinuti();
         double costo=(*it)->costoLezione();
 
-        int lezionePPL=(*it)->getTipo();
-        int lezioneGPL=(*it)->getTipo();
-
         tableWidget->insertRow( tableWidget->rowCount() );
 
         QString codiceDB = QString::number(id);
@@ -54,7 +51,7 @@ void lessonstable::updateView(){
         QTableWidgetItem *pagamentoItem = new QTableWidgetItem(pagamentoDB);
         QTableWidgetItem *costoItem = new QTableWidgetItem(costoDB);
 
-        if(lezionePPL)
+        if((*it)->getTipo()==1)
         {
             QString acrobatico = (**it).getAcrobatico() ? "Si" : "No";
             QTableWidgetItem *acrobaticoItem = new QTableWidgetItem(acrobatico);
@@ -64,10 +61,10 @@ void lessonstable::updateView(){
             tableWidget->setItem(n,7,trainiGray);
             tableWidget->item(n,7)->setFlags(!Qt::ItemIsEditable);
 
-            QTableWidgetItem *tipoPPL = new QTableWidgetItem("PPL");
-            tableWidget->setItem(n,9,tipoPPL);
+            QTableWidgetItem *tipoTable = new QTableWidgetItem("PPL");
+            tableWidget->setItem(n,9,tipoTable);
         }
-        else if(lezioneGPL)
+        else if((*it)->getTipo()==3)
         {
             int traini = (**it).getTraini();
             QString trainiDB = QString::number(traini);
@@ -78,8 +75,8 @@ void lessonstable::updateView(){
             tableWidget->setItem(n,6,acrobaticoGray);
             tableWidget->item(n,6)->setFlags(!Qt::ItemIsEditable);
 
-            QTableWidgetItem *tipoGPL = new QTableWidgetItem("GPL");
-            tableWidget->setItem(n,9,tipoGPL);
+            QTableWidgetItem *tipoTable = new QTableWidgetItem("GPL");
+            tableWidget->setItem(n,9,tipoTable);
         }
         else
         {
@@ -91,8 +88,8 @@ void lessonstable::updateView(){
             tableWidget->setItem(n,7,trainiGray);
             tableWidget->item(n,7)->setFlags(!Qt::ItemIsEditable);
 
-            QTableWidgetItem *tipoVDS = new QTableWidgetItem("VDS");
-            tableWidget->setItem(n,9,tipoVDS);
+            QTableWidgetItem *tipoTable = new QTableWidgetItem("VDS");
+            tableWidget->setItem(n,9,tipoTable);
         }
 
         tableWidget->setItem(n,0,idItem);
