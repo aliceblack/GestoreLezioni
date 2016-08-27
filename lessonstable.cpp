@@ -34,8 +34,8 @@ void lessonstable::updateView(){
         int minuti = (*it)->getMinuti();
         double costo=(*it)->costoLezione();
 
-        PPL* lezionePPL=dynamic_cast<PPL*>(*it);
-        GPL* lezioneGPL=dynamic_cast<GPL*>(*it);
+        int lezionePPL=(*it)->getTipo();
+        int lezioneGPL=(*it)->getTipo();
 
         tableWidget->insertRow( tableWidget->rowCount() );
 
@@ -56,7 +56,7 @@ void lessonstable::updateView(){
 
         if(lezionePPL)
         {
-            QString acrobatico = (*lezionePPL).getAcrobatico() ? "Si" : "No";
+            QString acrobatico = (**it).getAcrobatico() ? "Si" : "No";
             QTableWidgetItem *acrobaticoItem = new QTableWidgetItem(acrobatico);
             tableWidget->setItem(n,6,acrobaticoItem);
 
@@ -69,7 +69,7 @@ void lessonstable::updateView(){
         }
         else if(lezioneGPL)
         {
-            int traini = (*lezioneGPL).getTraini();
+            int traini = (**it).getTraini();
             QString trainiDB = QString::number(traini);
             QTableWidgetItem *trainiItem = new QTableWidgetItem(trainiDB);
             tableWidget->setItem(n,7,trainiItem);

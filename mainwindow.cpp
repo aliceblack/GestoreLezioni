@@ -252,7 +252,7 @@ void mainwindow::addPPL(){
     bool paga = pagataComboBox->currentIndex();
     bool acro = acrobComboBox->currentIndex();
 
-    PPL* nuova=new PPL(id,cod,vel,istr,min,paga,acro);
+    PPL* nuova=new PPL(1,id,cod,vel,istr,min,paga,acro,0);
     if(cod!="" && vel!="" && min!=0)
     {
         emit aggiungi(nuova);
@@ -289,7 +289,7 @@ void mainwindow::addVDS(){
     bool istr = istruttoreComboBox2->currentIndex();
     bool paga = pagataComboBox2->currentIndex();
 
-    VDS* nuova=new VDS(id,cod,vel,istr,min,paga);
+    VDS* nuova=new VDS(2,id,cod,vel,istr,min,paga);
     if(cod!="" && vel!="" && min!=0)
     {
         emit aggiungi(nuova);
@@ -327,7 +327,7 @@ void mainwindow::addGPL(){
     bool istr = istruttoreComboBox3->currentIndex();
     bool paga = pagataComboBox3->currentIndex();
 
-    GPL* nuova=new GPL(id,cod,vel,istr,min,paga,traini);
+    GPL* nuova=new GPL(3,id,cod,vel,istr,min,paga,0,traini);
     if(cod!="" && vel!="" && min!=0 && traini!=0)
     {
         emit aggiungi(nuova);

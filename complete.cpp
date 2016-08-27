@@ -53,25 +53,30 @@ Complete::iterator Complete::end(){
     return aux;
 }
 
+
 int Complete::oreSoloPPL(){
     int oreTot=0;
-    for(Complete::iterator it=begin(); it!=end(); ++it)
-    {
+        for(Complete::iterator it=begin(); it!=end(); ++it)
+        {
+            if((*it)->getTipo()==1)
+            {
+                if(!(*it)->getIstruttore() && !(*it)->getAcrobatico())
+                    {oreTot=oreTot+(*it)->getMinuti();}
+            }
 
-        PPL* p=dynamic_cast<PPL*>(*it);
-        if(p && !p->getIstruttore() && !p->getAcrobatico())
-            {oreTot=oreTot+p->getMinuti();}
-    }
-    return oreTot/60;//da minuti ad ore
+        }
+        return oreTot/60;//da minuti ad ore
 }
 
 int Complete::oreMasterPPL(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-        PPL* p=dynamic_cast<PPL*>(*it);
-        if(p && p->getIstruttore() && !p->getAcrobatico())
-           {oreTot=oreTot+p->getMinuti();}
+        if((*it)->getTipo()==1)
+        {
+            if((*it)->getIstruttore() && !(*it)->getAcrobatico())
+               {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }
@@ -80,9 +85,11 @@ int Complete::oreAcrobaticoPPL(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-        PPL* p=dynamic_cast<PPL*>(*it);
-        if(p && p->getAcrobatico())
-           {oreTot=oreTot+p->getMinuti();}
+        if((*it)->getTipo()==1)
+        {
+            if((*it)->getAcrobatico())
+               {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }
@@ -91,10 +98,11 @@ int Complete::oreSoloGPL(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-
-        GPL* g=dynamic_cast<GPL*>(*it);
-        if(g && !g->getIstruttore())
-            {oreTot=oreTot+g->getMinuti();}
+        if((*it)->getTipo()==3)
+        {
+            if(!(*it)->getIstruttore())
+                {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }
@@ -103,10 +111,11 @@ int Complete::oreMasterGPL(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-
-        GPL* g=dynamic_cast<GPL*>(*it);
-        if(g && g->getIstruttore())
-            {oreTot=oreTot+g->getMinuti();}
+        if((*it)->getTipo()==3)
+        {
+            if((*it)->getIstruttore())
+                {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }
@@ -115,10 +124,11 @@ int Complete::oreSoloVDS(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-
-        VDS* v=dynamic_cast<VDS*>(*it);
-        if(v && !v->getIstruttore())
-            {oreTot=oreTot+v->getMinuti();}
+        if((*it)->getTipo()==2)
+        {
+            if(!(*it)->getIstruttore())
+                {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }
@@ -127,10 +137,11 @@ int Complete::oreMasterVDS(){
     int oreTot=0;
     for(Complete::iterator it=begin(); it!=end(); ++it)
     {
-
-        VDS* v=dynamic_cast<VDS*>(*it);
-        if(v && v->getIstruttore())
-            {oreTot=oreTot+v->getMinuti();}
+        if((*it)->getTipo()==2)
+        {
+            if((*it)->getIstruttore())
+                {oreTot=oreTot+(*it)->getMinuti();}
+        }
     }
     return oreTot/60;
 }

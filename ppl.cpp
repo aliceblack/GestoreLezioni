@@ -1,19 +1,19 @@
 #include "ppl.h"
 
-PPL::PPL(int id, QString st,  QString vel, bool ist, int m, bool pag, bool ac): Motore(id, st, vel, ist, m, pag), acrobatico(ac){}
+PPL::PPL(int ti, int id, QString st,  QString vel, bool ist, int m, bool pag, bool acro, int tra): Motore(ti, id, st, vel, ist, m, pag, acro, tra){}
 
 PPL::~PPL(){}
 
-bool PPL::getAcrobatico()const{
-    return acrobatico;
-}
+//bool PPL::getAcrobatico()const{
+//    return acrobatico;
+//}
 
 double PPL::costoBenzina()const{
-    return getMinuti()*stimaConsumo+5*acrobatico;
+    return getMinuti()*stimaConsumo+5*getAcrobatico();
 }
 
 double PPL::costoLezione()const{
-    return getMinuti()*1.56+costoBenzina()+25*getIstruttore()+10*acrobatico;
+    return getMinuti()*1.56+costoBenzina()+25*getIstruttore()+10*getAcrobatico();
 }
 
 void PPL::saveLezione(QXmlStreamWriter& xmlWriter)const{

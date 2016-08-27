@@ -5,12 +5,9 @@
 
 
 class PPL: public Motore{
-private:
-    bool acrobatico;
 public:
-    PPL(int id, QString st, QString vel, bool ist, int m, bool pag, bool acro);
+    PPL(int ti, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int tra);
     virtual ~PPL();
-    bool getAcrobatico()const;
     virtual double costoBenzina()const;
     virtual double costoLezione()const;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const;

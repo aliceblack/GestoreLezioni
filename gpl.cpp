@@ -1,15 +1,11 @@
 #include "gpl.h"
 
-GPL::GPL(int id, QString st, QString vel, bool ist, int m, bool pag, int nt): Lezione(id, st, vel, ist, m, pag), traini(nt){}
+GPL::GPL(int ti, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int nt): Lezione(ti,id, st, vel, ist, m, pag, acro, nt){}
 
 GPL::~GPL(){}
 
-int GPL::getTraini()const{
-    return traini;
-}
-
 double GPL::costoLezione()const{
-return getMinuti()*0.38+25*getIstruttore()+traini*40;
+return getMinuti()*0.38+25*getIstruttore()+getTraini()*40;
 }
 
 void GPL::saveLezione(QXmlStreamWriter& xmlWriter)const{

@@ -1,8 +1,20 @@
 #include "lezione.h"
 
-Lezione::Lezione(int id, QString st, QString vel, bool ist, int m, bool pag):id(id), studente(st), velivolo(vel), istruttore(ist), minuti(m), pagata(pag){}
+Lezione::Lezione(int ti, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int tra):tipo(ti),id(id), studente(st), velivolo(vel), istruttore(ist), minuti(m), pagata(pag), acrobatico(acro), traini(tra){}
 
 Lezione::~Lezione(){}
+
+int Lezione::getTipo()const{
+    return tipo;
+}
+
+bool Lezione::getAcrobatico()const{
+    return acrobatico;
+}
+
+int Lezione::getTraini() const{
+    return traini;
+}
 
 int Lezione::getId()const{
     return id;
