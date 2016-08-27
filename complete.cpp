@@ -136,15 +136,15 @@ int Complete::oreMasterVDS(){
 }
 
 bool Complete::orePPL(){
-    return oreMasterPPL() && oreSoloPPL();
+    return oreMasterPPL()>=12 && oreSoloPPL()+oreMasterPPL()>=45;
 }
 
 bool Complete::oreGPL(){
-    return oreMasterGPL() && oreSoloGPL();
+    return oreMasterGPL()>=7 && oreSoloGPL()>=4 && oreSoloGPL()+oreMasterGPL()>=13;
 }
 
 bool Complete::oreVDS(){
-    return oreMasterVDS() && oreSoloVDS();
+    return oreMasterVDS()>=16;
 }
 
 bool Complete::minAcrobPPL(){
@@ -157,6 +157,7 @@ void Complete::remove(int idLez){
         if( (*it)->getId()==idLez )
         {
             lezioniComp.erase(it);
+            break;
         }
     }
 }

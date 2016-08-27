@@ -2,16 +2,18 @@
 
 PPL::PPL(int id, QString st,  QString vel, bool ist, int m, bool pag, bool ac): Motore(id, st, vel, ist, m, pag), acrobatico(ac){}
 
+PPL::~PPL(){}
+
 bool PPL::getAcrobatico()const{
     return acrobatico;
 }
 
 double PPL::costoBenzina()const{
-    return getMinuti()*0.37+5*acrobatico;
+    return getMinuti()*stimaConsumo+5*acrobatico;
 }
 
 double PPL::costoLezione()const{
-    return getMinuti()*0.46+costoBenzina()+25*getIstruttore()+10*acrobatico;
+    return getMinuti()*1.56+costoBenzina()+25*getIstruttore()+10*acrobatico;
 }
 
 void PPL::saveLezione(QXmlStreamWriter& xmlWriter)const{

@@ -14,7 +14,8 @@ private:
 public:
     explicit basewindow(DataBase* DB,QWidget *parent = 0);
     virtual  ~basewindow();
-    DataBase* getDB();
+    virtual void updateView()=0;
+    DataBase* getDB()const;
 };
 
 #endif // BASEWINDOW_H

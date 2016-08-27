@@ -3,9 +3,9 @@
 
 lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
 
-    tableWidget=new QTableWidget(0, 9);
+    tableWidget=new QTableWidget(0, 10);
     QStringList tabHeader;
-    tabHeader<<"ID Lezione"<<"Cod. Studente"<<"Velivolo"<<"Istruttore"<<"Minuti"<<"Pagamento"<<"Acrobatica"<<"N. Traini"<<"Costo";
+    tabHeader<<"ID Lezione"<<"Cod. Studente"<<"Velivolo"<<"Istruttore"<<"Minuti"<<"Pagamento"<<"Acrobatica"<<"N. Traini"<<"Costo"<<"Tipo";
     tableWidget->setHorizontalHeaderLabels(tabHeader);
 
     tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -13,7 +13,17 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
     QVBoxLayout* tableLayout=new QVBoxLayout();
     tableLayout->addWidget(tableWidget);
 
-    tableWidget->setFixedSize(1200,500);
+    QDesktopWidget sizes;
+    tableWidget->setFixedSize(sizes.screen()->width()*0.90,sizes.screen()->height()*0.75);
+
+    updateView();
+
+    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    setLayout(tableLayout);
+}
+
+void lessonstable::updateView(){
+    tableWidget->setRowCount(0);
     int n=0;
     Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
@@ -25,7 +35,6 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
         double costo=(*it)->costoLezione();
 
         PPL* lezionePPL=dynamic_cast<PPL*>(*it);
-        //VDS* lezioneVDS=dynamic_cast<VDS*>(*it);
         GPL* lezioneGPL=dynamic_cast<GPL*>(*it);
 
         tableWidget->insertRow( tableWidget->rowCount() );
@@ -54,6 +63,9 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
             QTableWidgetItem *trainiGray = new QTableWidgetItem("0");
             tableWidget->setItem(n,7,trainiGray);
             tableWidget->item(n,7)->setFlags(!Qt::ItemIsEditable);
+
+            QTableWidgetItem *tipoPPL = new QTableWidgetItem("PPL");
+            tableWidget->setItem(n,9,tipoPPL);
         }
         else if(lezioneGPL)
         {
@@ -65,6 +77,9 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
             QTableWidgetItem *acrobaticoGray = new QTableWidgetItem("No");
             tableWidget->setItem(n,6,acrobaticoGray);
             tableWidget->item(n,6)->setFlags(!Qt::ItemIsEditable);
+
+            QTableWidgetItem *tipoGPL = new QTableWidgetItem("GPL");
+            tableWidget->setItem(n,9,tipoGPL);
         }
         else
         {
@@ -75,6 +90,9 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
             QTableWidgetItem *trainiGray = new QTableWidgetItem("0");
             tableWidget->setItem(n,7,trainiGray);
             tableWidget->item(n,7)->setFlags(!Qt::ItemIsEditable);
+
+            QTableWidgetItem *tipoVDS = new QTableWidgetItem("VDS");
+            tableWidget->setItem(n,9,tipoVDS);
         }
 
         tableWidget->setItem(n,0,idItem);
@@ -84,13 +102,12 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
         tableWidget->setItem(n,4,minutiItem);
         tableWidget->setItem(n,5,pagamentoItem);
         tableWidget->setItem(n,8,costoItem);
-        //tableWidget->item(n,8)->setFlags(!Qt::ItemIsEditable);
 
         ++n;
     }
-    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    setLayout(tableLayout);
 
 }
 
-lessonstable::~lessonstable(){}
+lessonstable::~lessonstable(){
+    delete tableWidget;
+}

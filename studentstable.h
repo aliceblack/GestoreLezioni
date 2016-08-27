@@ -12,7 +12,9 @@ class studentstable : public basewindow{
     Q_OBJECT
 public:
     explicit studentstable(DataBase* DB);
-    ~studentstable();
+    virtual ~studentstable();
+    virtual void updateView();
+private:
     QTableWidget* tableWidget;
 };
 

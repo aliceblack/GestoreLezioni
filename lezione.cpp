@@ -1,8 +1,8 @@
 #include "lezione.h"
 
-Lezione::Lezione(){}
+Lezione::Lezione(int id, QString st, QString vel, bool ist, int m, bool pag):id(id), studente(st), velivolo(vel), istruttore(ist), minuti(m), pagata(pag){}
 
-Lezione::Lezione(int id, QString st, QString vel, bool ist, int m, bool pag):id(id), studente(st), velivolo(vel), istruttore(ist), minuti(m), pagata(pag){} //costruzione?
+Lezione::~Lezione(){}
 
 int Lezione::getId()const{
     return id;

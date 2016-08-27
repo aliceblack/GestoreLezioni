@@ -2,48 +2,65 @@
 #include <QMessageBox>
 mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
 
+
     QWidget * groundWindow =&ground;
+    groundWindow->setWindowTitle("Gestore Lezioni");
 
     //PRIMA TAB
 
     QWidget * mainWidget=new QWidget();
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
-    lessonstable * tableWg = new lessonstable(getDB());
+    tableWg = new lessonstable(getDB());
     mainLayout->addWidget(tableWg);
 
-    QPushButton *deleteLezione = new QPushButton("Elimina Lezione");
-    mainLayout->addWidget(deleteLezione);
-    QPushButton *pagamento = new QPushButton("Pagamento");
-    mainLayout->addWidget(pagamento);
-    QPushButton *exit = new QPushButton("Esci");
-    mainLayout->addWidget(exit);
+    QWidget * buttonsWg=new QWidget;
+    QHBoxLayout * buttonsLayout=new QHBoxLayout(buttonsWg);
+    QPushButton * deleteLezione = new QPushButton("Elimina Lezione");
+    buttonsLayout->addWidget(deleteLezione);
+    QPushButton * pagamento = new QPushButton("Pagamento");
+    buttonsLayout->addWidget(pagamento);
+    QPushButton * exit = new QPushButton("Esci");
+    buttonsLayout->addWidget(exit);
+    mainLayout->addWidget(buttonsWg);
 
     //SECONDA TAB
 
-    QWidget * secondWidget=new QWidget();
+    QWidget *secondWidget=new QWidget();
     QVBoxLayout *secondLayout = new QVBoxLayout(secondWidget);
-    studentstable * tableSt = new studentstable(getDB());
+    tableSt = new studentstable(getDB());
     secondLayout->addWidget(tableSt);
     QPushButton *exit2 = new QPushButton("Esci");
     secondLayout->addWidget(exit2);
 
     QTabWidget *tabs = new QTabWidget(groundWindow);
 
-    tabs->addTab(mainWidget,"TAB 1");
-    tabs->addTab(secondWidget,"TAB 2");
+    tabs->addTab(mainWidget,"LEZIONI");
+    tabs->addTab(secondWidget,"STUDENTI");
 
     //TERZA TAB
-    QWidget * thirdWidget = new QWidget;
-    QHBoxLayout *thirdLayout= new QHBoxLayout(thirdWidget);
+
+    QWidget *verticalWidget = new QWidget;
+    QVBoxLayout *verticalLayout = new QVBoxLayout(verticalWidget);
+
+    QWidget *thirdWidget = new QWidget;//box box2 box3
+    QHBoxLayout *thirdLayout = new QHBoxLayout(thirdWidget);
+
+    verticalLayout->addWidget(thirdWidget);
+
+    QPushButton *exit3 = new QPushButton("Esci");
+
+    verticalLayout->addWidget(exit3);
 
     //AGGIUNTA LEZIONE PER LICENZA PILOTA PRIVATO
 
     QWidget * box = new QWidget;
+
     thirdLayout->addWidget(box);
     box->setMaximumWidth(350);
 
     QVBoxLayout *layout = new QVBoxLayout(box);
 
+    QLabel* tipoLabel=new QLabel("NUOVA LEZIONE PILOTA PRIVATO");
     QLabel* studenteLabel=new QLabel("Codice Studente:");
     QLabel* velivoloLabel=new QLabel("Velivolo:");
     QLabel* minutiLabel=new QLabel("Minuti:");
@@ -67,7 +84,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
     acrobComboBox->addItem(tr("No"));
     acrobComboBox->addItem(tr("Si"));
 
-
+    layout->addWidget(tipoLabel);
     layout->addWidget(studenteLabel);
     layout->addWidget(studenteEdit);
     layout->addWidget(velivoloLabel);
@@ -85,13 +102,8 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
     layout->addWidget(acrobLabel);
     layout->addWidget(acrobComboBox);
 
-
-
     QPushButton *aggiungiPPLButton = new QPushButton("Aggiungi");
     layout->addWidget(aggiungiPPLButton);
-
-    QPushButton *exit3 = new QPushButton("Esci");
-   layout->addWidget(exit3);
 
    //AGGIUNTA LEZIONE ATTESTATO VOLO DIPORTO O SPORTIVO
 
@@ -100,6 +112,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
    box2->setMaximumWidth(350);
    QVBoxLayout *layout2 = new QVBoxLayout(box2);
 
+   QLabel* tipoLabel2=new QLabel("NUOVA LEZIONE VOLO DIPORTO O SPORTIVO");
    QLabel* studenteLabel2=new QLabel("Codice Studente:");
    QLabel* velivoloLabel2=new QLabel("Velivolo:");
    QLabel* minutiLabel2=new QLabel("Minuti:");
@@ -118,6 +131,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
    pagataComboBox2->addItem(tr("No"));
    pagataComboBox2->addItem(tr("Si"));
 
+   layout2->addWidget(tipoLabel2);
    layout2->addWidget(studenteLabel2);
    layout2->addWidget(studenteEdit2);
    layout2->addWidget(velivoloLabel2);
@@ -142,6 +156,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
    box3->setMaximumWidth(350);
    QVBoxLayout *layout3 = new QVBoxLayout(box3);
 
+   QLabel* tipoLabel3=new QLabel("NUOVA LEZIONE PILOTA ALIANTE");
    QLabel* studenteLabel3=new QLabel("Codice Studente:");
    QLabel* velivoloLabel3=new QLabel("Velivolo:");
    QLabel* minutiLabel3=new QLabel("Minuti:");
@@ -162,6 +177,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
    pagataComboBox3->addItem(tr("No"));
    pagataComboBox3->addItem(tr("Si"));
 
+   layout3->addWidget(tipoLabel3);
    layout3->addWidget(studenteLabel3);
    layout3->addWidget(studenteEdit3);
    layout3->addWidget(velivoloLabel3);
@@ -184,21 +200,39 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
 
    //CONNECT BUTTONS, DIMENSIONI
 
-    tabs->addTab(thirdWidget,"TAB 3");
-    //tabs->setFixedSize(400, 400);
-    //tabs->adjustSize();
+   tabs->addTab(verticalWidget,"AGGIUNGI LEZIONE");
+   tabs->adjustSize();
 
-    //connect(addLezione,SIGNAL(clicked()),this,SLOT(addSignal()));
-    connect(aggiungiPPLButton,SIGNAL(clicked()),this,SLOT(addPPL()));
-    connect(aggiungiVDSButton,SIGNAL(clicked()),this,SLOT(addVDS()));
-    connect(aggiungiGPLButton,SIGNAL(clicked()),this,SLOT(addGPL()));
-    connect(deleteLezione,SIGNAL(clicked()),this,SLOT(deleteSignal()));
-    connect(pagamento,SIGNAL(clicked()),this,SLOT(pagamentoSignal()));
-    connect(exit,SIGNAL(clicked()),qApp,SLOT(quit()));
-    connect(exit2,SIGNAL(clicked()),qApp,SLOT(quit()));
-    connect(exit3,SIGNAL(clicked()),qApp,SLOT(quit()));
+   if(getDB()->getVuoto())
+   {
+       QMessageBox mex;
+       mex.setWindowTitle("Attenzione");
+       mex.setText("DataBase mancante, è stato creato un DataBase vuoto");
+       mex.setStandardButtons(QMessageBox::Ok);
+       mex.exec();
+   }
+   if(getDB()->getCorrotto())
+   {
+       QMessageBox mex;
+       mex.setWindowTitle("Attenzione");
+       mex.setText("DataBase corrotto");
+       mex.setStandardButtons(QMessageBox::Ok);
+       mex.exec();
+   }
 
-    groundWindow->showMaximized();
+   connect(aggiungiPPLButton,SIGNAL(clicked()),this,SLOT(addPPL()));
+   connect(aggiungiVDSButton,SIGNAL(clicked()),this,SLOT(addVDS()));
+   connect(aggiungiGPLButton,SIGNAL(clicked()),this,SLOT(addGPL()));
+   connect(deleteLezione,SIGNAL(clicked()),this,SLOT(deleteMainWindow()));
+   connect(pagamento,SIGNAL(clicked()),this,SLOT(pagamentoMainWindow()));
+   connect(exit,SIGNAL(clicked()),qApp,SLOT(quit()));
+   connect(exit2,SIGNAL(clicked()),qApp,SLOT(quit()));
+   connect(exit3,SIGNAL(clicked()),qApp,SLOT(quit()));
+
+   QDesktopWidget sizes;
+   groundWindow->setMinimumSize(sizes.screen()->width()*0.95,sizes.screen()->height());
+
+   groundWindow->showMaximized();
 }
 
 void mainwindow::closeEvent(QCloseEvent*){
@@ -219,7 +253,28 @@ void mainwindow::addPPL(){
     bool acro = acrobComboBox->currentIndex();
 
     PPL* nuova=new PPL(id,cod,vel,istr,min,paga,acro);
-    emit aggiungi(nuova);
+    if(cod!="" && vel!="" && min!=0)
+    {
+        emit aggiungi(nuova);
+        updateView();
+        studenteEdit->clear();
+        velivoloEdit->clear();
+        minutiEdit->clear();
+        QMessageBox mex;
+        mex.setWindowTitle("Lezione Aggiunta");
+        mex.setText("La lezione è stata aggiunta correttamente");
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
+    else
+    {
+        QMessageBox mex;
+        mex.setWindowTitle("Attenzione");
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
+        else{mex.setText("Completare tutti i campi");}
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
 }
 
 void mainwindow::addVDS(){
@@ -235,7 +290,28 @@ void mainwindow::addVDS(){
     bool paga = pagataComboBox2->currentIndex();
 
     VDS* nuova=new VDS(id,cod,vel,istr,min,paga);
-    emit aggiungi(nuova);
+    if(cod!="" && vel!="" && min!=0)
+    {
+        emit aggiungi(nuova);
+        updateView();
+        studenteEdit2->clear();
+        velivoloEdit2->clear();
+        minutiEdit2->clear();
+        QMessageBox mex;
+        mex.setWindowTitle("Lezione Aggiunta");
+        mex.setText("La lezione è stata aggiunta correttamente");
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
+    else
+    {
+        QMessageBox mex;
+        mex.setWindowTitle("Attenzione");
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
+        else{mex.setText("Completare tutti i campi");}
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
 }
 
 void mainwindow::addGPL(){
@@ -252,58 +328,79 @@ void mainwindow::addGPL(){
     bool paga = pagataComboBox3->currentIndex();
 
     GPL* nuova=new GPL(id,cod,vel,istr,min,paga,traini);
-    emit aggiungi(nuova);
+    if(cod!="" && vel!="" && min!=0 && traini!=0)
+    {
+        emit aggiungi(nuova);
+        updateView();
+        studenteEdit3->clear();
+        velivoloEdit3->clear();
+        minutiEdit3->clear();
+        trainiEdit3->clear();
+        QMessageBox mex;
+        mex.setWindowTitle("Lezione Aggiunta");
+        mex.setText("La lezione è stata aggiunta correttamente");
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
+    else
+    {
+        QMessageBox mex;
+        mex.setWindowTitle("Attenzione");
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
+        else if(traini==0){mex.setText("Completare tutti i campi. Attenzione: minimo 1 traino");}
+        else{mex.setText("Completare tutti i campi");}
+        mex.setStandardButtons(QMessageBox::Ok);
+        mex.exec();
+    }
 }
 
-/*
-void mainwindow::addSignal(){
-    PPL* nuova=new PPL(79,"stude","m-899",1,40,0,0);
-    emit aggiungi(nuova);
-    bool inserito;
-    QStringList items;
-    items << tr("Licenza Pilota Privato") << tr("Attestato Volo Diporto e Sportivo") << tr("Licenza Pilota Aliante");
-    QString item = QInputDialog::getItem(this, tr("QInputDialog::getItem()"),tr("Tipo:"), items, 0, false, &inserito);
-
-    int id; Complete::iterator it;
-    for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
-    {id=(*it)->getId()+1;}
-
-    if(item=="Licenza Pilota Privato")
-    {
-        //PPL* nuova=new PPL(id,"770","m-899",1,40,0,0);
-        //aggiungiPPL formPPL;
-        //aggiungiPPL boh(getDB());
-        //QString stude=boh.studente;
-        //PPL* nuova=new PPL(69,stude,"m-899",1,40,0,0);
-        //emit aggiungi(nuova);
-        //aggiungiPPL formPPL;
-        //aggiungiPPL boh(getDB());
-        //c_aggiungiPPL controller(getDB(),&boh);
-        //boh.show();
-
-    }
-    if(item=="Attestato Volo Diporto e Sportivo")
-    {
-        VDS* nuova=new VDS(id,"770","m-899",1,40,0);
-        emit aggiungi(nuova);
-    }
-    if(item=="Licenza Pilota Aliante")
-    {
-        GPL* nuova=new GPL(id,"770","m-899",1,40,0,3);
-        emit aggiungi(nuova);
-    }
-}*/
-
-void mainwindow::deleteSignal(){
+void mainwindow::deleteMainWindow(){
     bool inserito;
     QInputDialog *inputDialog = new QInputDialog();
-    QString idLezione = inputDialog->getText(0, "Pagamento Lezione", "ID Lezione", QLineEdit::Normal,"", &inserito);
-    if(inserito){emit rimuovi(idLezione.toInt());}
+    QString idLezione = inputDialog->getText(0, "Elimina Lezione", "Insere ID della lezione da eliminare:", QLineEdit::Normal,"", &inserito);
+    if(inserito){
+        emit rimuovi(idLezione.toInt());
+        updateView();
+    }
 }
 
-void mainwindow::pagamentoSignal(){
+void mainwindow::pagamentoMainWindow(){
     bool inserito;
     QInputDialog *inputDialog = new QInputDialog();
-    QString idLezione = inputDialog->getText(0, "Pagamento Lezione", "ID Lezione", QLineEdit::Normal,"", &inserito);     /*parent titolo label echomode text boolok*/
-    if(inserito){emit paga(idLezione.toInt());}
+    QString idLezione = inputDialog->getText(0, "Pagamento Lezione", "Inserire ID della lezione da pagare", QLineEdit::Normal,"", &inserito);
+    if(inserito)
+    {
+        emit paga(idLezione.toInt());
+        updateView();
+    }
+}
+
+void mainwindow::updateView(){
+    tableWg->updateView();
+    tableSt->updateView();
+}
+
+mainwindow::~mainwindow(){
+    delete  tableWg;
+    delete tableSt;
+
+    delete studenteEdit;
+    delete velivoloEdit;
+    delete istruttoreComboBox;
+    delete minutiEdit;
+    delete pagataComboBox;
+    delete acrobComboBox;
+
+    delete studenteEdit2;
+    delete velivoloEdit2;
+    delete istruttoreComboBox2;
+    delete minutiEdit2;
+    delete pagataComboBox2;
+
+    delete studenteEdit3;
+    delete velivoloEdit3;
+    delete istruttoreComboBox3;
+    delete minutiEdit3;
+    delete pagataComboBox3;
+    delete trainiEdit3;
 }

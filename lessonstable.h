@@ -10,7 +10,9 @@ class lessonstable : public basewindow{
     Q_OBJECT
 public:
     explicit lessonstable(DataBase* DB);
-    ~lessonstable();
+    virtual ~lessonstable();
+    virtual void updateView();
+private:
     QTableWidget* tableWidget;
 };
 

@@ -12,15 +12,18 @@
 #include"ppl.h"
 #include"vds.h"
 #include"gpl.h"
-#include"studente.h"
 
 
 class DataBase{
 private:
     Complete db;
+    bool vuoto;
+    bool corrotto;
 public:
     DataBase();
     ~DataBase();
+    bool getVuoto()const;
+    bool getCorrotto()const;
     void load();
     void close();
     void addDB(Lezione*);

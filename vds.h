@@ -7,6 +7,7 @@
 class VDS: public Motore{
 public:
     VDS(int id, QString st,  QString vel, bool ist, int m, bool pag);
+    virtual ~VDS();
     virtual double costoBenzina()const;
     virtual double costoLezione()const;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const;

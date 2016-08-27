@@ -2,6 +2,8 @@
 
 GPL::GPL(int id, QString st, QString vel, bool ist, int m, bool pag, int nt): Lezione(id, st, vel, ist, m, pag), traini(nt){}
 
+GPL::~GPL(){}
+
 int GPL::getTraini()const{
     return traini;
 }

@@ -10,18 +10,17 @@ c_mainwindow::c_mainwindow(DataBase* db, mainwindow* gr, QObject *parent) : QObj
 void c_mainwindow::aggiungiDB(Lezione* nuova){
     c_db->addDB(nuova);
     c_db->close();
-    //view->aggiorna_vista();
 }
 
 void c_mainwindow::rimuoviDB(int id){
     c_db->removeDB(id);
     c_db->close();
-    //view->aggiorna_vista();
 }
 
 
 void c_mainwindow::pagaDB(int id){
     c_db->pagaDB(id);
     c_db->close();
-    //view->aggiorna_vista();
 }
+
+c_mainwindow::~c_mainwindow(){}

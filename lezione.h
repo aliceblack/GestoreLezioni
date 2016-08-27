@@ -1,21 +1,19 @@
 #ifndef LEZIONE_H
 #define LEZIONE_H
-#include <iostream>
 #include <QString>
 #include <QXmlStreamWriter>
-using namespace std;
 
 class Lezione{
 private:
     int id;
     QString studente;
-    QString velivolo; //immatricolazione enac
+    QString velivolo; //immatricolazione enac (o estero)
     bool istruttore;
     int minuti;
     bool pagata;
 public:
-    Lezione();
-    Lezione(int id, QString st, QString vel, bool ist, int m, bool pag); //argomenti default
+    Lezione(int id, QString st, QString vel, bool ist, int m, bool pag);
+    virtual ~Lezione();
     int getId()const;
     QString getStudente()const;
     QString getVelivolo()const;
@@ -25,7 +23,6 @@ public:
     void setPagata();
     virtual double costoLezione()const=0;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const=0;
-    //distruttore
 };
 
 #endif // LEZIONE_H

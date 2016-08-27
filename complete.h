@@ -5,6 +5,7 @@
 #include "gpl.h"
 #include "vds.h"
 #include "lezione.h"
+using std::vector;
 
 class Complete{
 friend class iterator;

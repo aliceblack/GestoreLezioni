@@ -7,6 +7,7 @@ private:
     int traini;
 public:
     GPL(int id, QString st, QString vel, bool ist, int m, bool pag, int nt);
+    virtual ~GPL();
     int getTraini()const;
     virtual double costoLezione()const;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const;

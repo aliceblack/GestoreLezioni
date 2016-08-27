@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = ScuolaVoloPadova
+TARGET = GestoreLezioni
 TEMPLATE = app
 
 
@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     gpl.cpp \
     complete.cpp \
     database.cpp \
-    studente.cpp \
     basewindow.cpp \
     mainwindow.cpp \
     lessonstable.cpp \
@@ -35,7 +34,6 @@ HEADERS  += \
     gpl.h \
     complete.h \
     database.h \
-    studente.h \
     basewindow.h \
     mainwindow.h \
     lessonstable.h \

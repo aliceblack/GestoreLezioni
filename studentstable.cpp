@@ -3,6 +3,7 @@
 
 studentstable::studentstable(DataBase* DB) : basewindow(DB) {
 
+
     tableWidget=new QTableWidget(0, 14);
     QStringList tabHeader;
     tabHeader<<"Studente"<<"Pagamento"<<"Debito"<<"Master PPL"<<"Solo PPL"<<"Minimo PPL"<<"Master VDS"<<"Solo VDS"<<"Minimo VDS"<<"Master GPL"<<"Solo GPL"<<"Minimo GPL"<<"PPL Acrob"<<"PLL Acrob";
@@ -15,8 +16,13 @@ studentstable::studentstable(DataBase* DB) : basewindow(DB) {
     tableLayout->addWidget(tableWidget);
 
 
-    //tableWidget->setFixedSize(1200,500);
+    updateView();
 
+    setLayout(tableLayout);
+}
+
+void studentstable::updateView(){
+    tableWidget->setRowCount(0);
     Complete::iterator it;
     QVector<QString> studenti;
     QVector<QString>::iterator sit;
@@ -123,8 +129,9 @@ studentstable::studentstable(DataBase* DB) : basewindow(DB) {
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         n++;
     }
-    setLayout(tableLayout);
 
 }
 
-studentstable::~studentstable(){}
+studentstable::~studentstable(){
+    delete tableWidget;
+}

@@ -13,10 +13,14 @@ class mainwindow : public basewindow{
     Q_OBJECT
 public:
     explicit mainwindow(DataBase* DB);
-    //~mainwindow();
-    QWidget ground;
+    virtual ~mainwindow();
     void closeEvent(QCloseEvent*);
+    virtual void updateView();
 private:
+    QWidget ground;
+    lessonstable*  tableWg;
+    studentstable* tableSt;
+
     QLineEdit* studenteEdit;
     QLineEdit* velivoloEdit;
     QComboBox* istruttoreComboBox;
@@ -38,18 +42,15 @@ private:
     QLineEdit* trainiEdit3;
 signals:
     void aggiungi(Lezione*);
-    //void signalAddPPL();
     void rimuovi(int);
     void paga(int);
     void closeProgram();
 private slots:
-    //void addSignal();
     void addPPL();
     void addVDS();
     void addGPL();
-    //void slotAddPPL();
-    void deleteSignal();
-    void pagamentoSignal();
+    void deleteMainWindow();
+    void pagamentoMainWindow();
 };
 
 #endif // MAINWINDOW_H
