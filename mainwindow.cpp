@@ -243,6 +243,7 @@ void mainwindow::addPPL(){
     int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
+    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit->text();
     QString vel = velivoloEdit->text();
@@ -281,6 +282,7 @@ void mainwindow::addVDS(){
     int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
+    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit2->text();
     QString vel = velivoloEdit2->text();
@@ -318,6 +320,7 @@ void mainwindow::addGPL(){
     int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
+    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit3->text();
     QString vel = velivoloEdit3->text();
