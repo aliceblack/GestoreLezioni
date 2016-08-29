@@ -240,7 +240,7 @@ void mainwindow::closeEvent(QCloseEvent*){
 }
 
 void mainwindow::addPPL(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
     if(getDB()->getVuoto()){id=1;}
@@ -279,7 +279,7 @@ void mainwindow::addPPL(){
 }
 
 void mainwindow::addVDS(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
     if(getDB()->getVuoto()){id=1;}
@@ -317,7 +317,7 @@ void mainwindow::addVDS(){
 }
 
 void mainwindow::addGPL(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
     if(getDB()->getVuoto()){id=1;}
