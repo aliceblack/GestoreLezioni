@@ -7,13 +7,12 @@ lessonstable::lessonstable(DataBase* DB) : basewindow(DB) {
     QStringList tabHeader;
     tabHeader<<"ID Lezione"<<"Cod. Studente"<<"Velivolo"<<"Istruttore"<<"Minuti"<<"Pagamento"<<"Acrobatica"<<"N. Traini"<<"Costo"<<"Tipo";
     tableWidget->setHorizontalHeaderLabels(tabHeader);
-
-    tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
     QVBoxLayout* tableLayout=new QVBoxLayout();
     tableLayout->addWidget(tableWidget);
 
-    QDesktopWidget sizes;
+    QDesktopWidget sizes;  
     tableWidget->setFixedSize(sizes.screen()->width()*0.90,sizes.screen()->height()*0.75);
 
     updateView();

@@ -9,8 +9,7 @@ studentstable::studentstable(DataBase* DB) : basewindow(DB) {
     tabHeader<<"Studente"<<"Pagamento"<<"Debito"<<"Master PPL"<<"Solo PPL"<<"Minimo PPL"<<"Master VDS"<<"Solo VDS"<<"Minimo VDS"<<"Master GPL"<<"Solo GPL"<<"Minimo GPL"<<"PPL Acrob"<<"PLL Acrob";
 
     tableWidget->setHorizontalHeaderLabels(tabHeader);
-
-    tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 
     QVBoxLayout* tableLayout=new QVBoxLayout();
     tableLayout->addWidget(tableWidget);

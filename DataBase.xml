@@ -571,4 +571,23 @@
         <pagata>0</pagata>
         <traini>1</traini>
     </lezione>
+    <lezione>
+        <id>60</id>
+        <tipo>3</tipo>
+        <studente>003</studente>
+        <velivolo>n5657</velivolo>
+        <istruttore>1</istruttore>
+        <minuti>60</minuti>
+        <pagata>0</pagata>
+        <traini>1</traini>
+    </lezione>
+    <lezione>
+        <id>61</id>
+        <tipo>2</tipo>
+        <studente>002</studente>
+        <velivolo>n899</velivolo>
+        <istruttore>1</istruttore>
+        <minuti>70</minuti>
+        <pagata>0</pagata>
+    </lezione>
 </database>
