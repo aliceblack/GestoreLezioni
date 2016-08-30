@@ -11,7 +11,7 @@
 class studentstable : public basewindow{
     Q_OBJECT
 public:
-    explicit studentstable(DataBase* DB);
+    studentstable(DataBase* DB);
     virtual ~studentstable();
     virtual void updateView();
 private:

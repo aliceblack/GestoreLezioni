@@ -9,7 +9,7 @@
 class lessonstable : public basewindow{
     Q_OBJECT
 public:
-    explicit lessonstable(DataBase* DB);
+    lessonstable(DataBase* DB);
     virtual ~lessonstable();
     virtual void updateView();
 private:

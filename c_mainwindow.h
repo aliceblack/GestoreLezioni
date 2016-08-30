@@ -9,7 +9,7 @@
 class c_mainwindow : public QObject{
     Q_OBJECT
 public:
-    explicit c_mainwindow(DataBase* , mainwindow * , QObject *parent=0);
+    c_mainwindow(DataBase* , mainwindow * , QObject *parent=0);
     ~c_mainwindow();
 private slots:
     void aggiungiDB(Lezione*);

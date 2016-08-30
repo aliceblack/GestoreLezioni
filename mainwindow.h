@@ -12,7 +12,7 @@
 class mainwindow : public basewindow{
     Q_OBJECT
 public:
-    explicit mainwindow(DataBase* DB);
+    mainwindow(DataBase* DB);
     virtual ~mainwindow();
     void closeEvent(QCloseEvent*);
     virtual void updateView();

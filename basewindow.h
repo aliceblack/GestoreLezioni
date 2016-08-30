@@ -12,7 +12,7 @@ class basewindow : public QWidget{
 private:
     DataBase* windowDB;
 public:
-    explicit basewindow(DataBase* DB,QWidget *parent = 0);
+    basewindow(DataBase* DB,QWidget *parent = 0);
     virtual  ~basewindow();
     virtual void updateView()=0;
     DataBase* getDB()const;
