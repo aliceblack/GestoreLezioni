@@ -1,8 +1,12 @@
 #include "gpl.h"
 
-GPL::GPL(int ti, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int nt): Lezione(ti,id, st, vel, ist, m, pag, acro, nt){}
+GPL::GPL(int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int nt): Lezione(id, st, vel, ist, m, pag, acro, nt){}
 
 GPL::~GPL(){}
+
+int GPL::getTipo()const{
+    return 3;
+}
 
 double GPL::costoLezione()const{
 return getMinuti()*0.38+25*getIstruttore()+getTraini()*40;

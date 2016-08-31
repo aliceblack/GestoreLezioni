@@ -6,8 +6,9 @@
 
 class PPL: public Motore{
 public:
-    PPL(int ti, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int tra);
+    PPL(int id, QString st, QString vel, bool ist, int m, bool pag, bool acro, int tra);
     virtual ~PPL();
+    int getTipo()const;
     virtual double costoBenzina()const;
     virtual double costoLezione()const;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const;

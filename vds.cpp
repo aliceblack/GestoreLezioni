@@ -1,8 +1,12 @@
 #include "vds.h"
 
-VDS::VDS(int ti, int id, QString st, QString vel, bool ist, int m, bool pag):Motore(ti, id, st, vel, ist, m, pag){}
+VDS::VDS(int id, QString st, QString vel, bool ist, int m, bool pag):Motore(id, st, vel, ist, m, pag){}
 
 VDS::~VDS(){}
+
+int VDS::getTipo()const{
+    return 2;
+}
 
 double VDS::costoBenzina()const{
     return getMinuti()*stimaConsumo;

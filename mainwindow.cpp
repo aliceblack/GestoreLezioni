@@ -207,7 +207,7 @@ mainwindow::mainwindow(DataBase* DB) : basewindow(DB), ground() {
    {
        QMessageBox mex;
        mex.setWindowTitle("Attenzione");
-       mex.setText("DataBase mancante,creato un DataBase vuoto");
+       mex.setText("DataBase mancante, è stato creato un DataBase vuoto");
        mex.setStandardButtons(QMessageBox::Ok);
        mex.exec();
    }
@@ -240,10 +240,9 @@ void mainwindow::closeEvent(QCloseEvent*){
 }
 
 void mainwindow::addPPL(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
-    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit->text();
     QString vel = velivoloEdit->text();
@@ -253,7 +252,7 @@ void mainwindow::addPPL(){
     bool paga = pagataComboBox->currentIndex();
     bool acro = acrobComboBox->currentIndex();
 
-    PPL* nuova=new PPL(1,id,cod,vel,istr,min,paga,acro,0);
+    PPL* nuova=new PPL(id,cod,vel,istr,min,paga,acro,0);
     if(cod!="" && vel!="" && min!=0)
     {
         emit aggiungi(nuova);
@@ -263,7 +262,7 @@ void mainwindow::addPPL(){
         minutiEdit->clear();
         QMessageBox mex;
         mex.setWindowTitle("Lezione Aggiunta");
-        mex.setText("La lezione e' stata aggiunta correttamente");
+        mex.setText("La lezione è stata aggiunta correttamente");
         mex.setStandardButtons(QMessageBox::Ok);
         mex.exec();
     }
@@ -271,7 +270,7 @@ void mainwindow::addPPL(){
     {
         QMessageBox mex;
         mex.setWindowTitle("Attenzione");
-        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non puo' durare 0 minuti");}
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
         else{mex.setText("Completare tutti i campi");}
         mex.setStandardButtons(QMessageBox::Ok);
         mex.exec();
@@ -279,10 +278,9 @@ void mainwindow::addPPL(){
 }
 
 void mainwindow::addVDS(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
-    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit2->text();
     QString vel = velivoloEdit2->text();
@@ -291,7 +289,7 @@ void mainwindow::addVDS(){
     bool istr = istruttoreComboBox2->currentIndex();
     bool paga = pagataComboBox2->currentIndex();
 
-    VDS* nuova=new VDS(2,id,cod,vel,istr,min,paga);
+    VDS* nuova=new VDS(id,cod,vel,istr,min,paga);
     if(cod!="" && vel!="" && min!=0)
     {
         emit aggiungi(nuova);
@@ -301,7 +299,7 @@ void mainwindow::addVDS(){
         minutiEdit2->clear();
         QMessageBox mex;
         mex.setWindowTitle("Lezione Aggiunta");
-        mex.setText("La lezione e' stata aggiunta correttamente");
+        mex.setText("La lezione è stata aggiunta correttamente");
         mex.setStandardButtons(QMessageBox::Ok);
         mex.exec();
     }
@@ -309,7 +307,7 @@ void mainwindow::addVDS(){
     {
         QMessageBox mex;
         mex.setWindowTitle("Attenzione");
-        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non puo' durare 0 minuti");}
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
         else{mex.setText("Completare tutti i campi");}
         mex.setStandardButtons(QMessageBox::Ok);
         mex.exec();
@@ -317,10 +315,9 @@ void mainwindow::addVDS(){
 }
 
 void mainwindow::addGPL(){
-    int id=0; Complete::iterator it;
+    int id; Complete::iterator it;
     for(it=(getDB())->beginDB(); it!=(getDB())->endDB(); ++it)
     {id=(*it)->getId()+1;}
-    if(getDB()->getVuoto()){id=1;}
 
     QString cod = studenteEdit3->text();
     QString vel = velivoloEdit3->text();
@@ -330,7 +327,7 @@ void mainwindow::addGPL(){
     bool istr = istruttoreComboBox3->currentIndex();
     bool paga = pagataComboBox3->currentIndex();
 
-    GPL* nuova=new GPL(3,id,cod,vel,istr,min,paga,0,traini);
+    GPL* nuova=new GPL(id,cod,vel,istr,min,paga,0,traini);
     if(cod!="" && vel!="" && min!=0 && traini!=0)
     {
         emit aggiungi(nuova);
@@ -341,7 +338,7 @@ void mainwindow::addGPL(){
         trainiEdit3->clear();
         QMessageBox mex;
         mex.setWindowTitle("Lezione Aggiunta");
-        mex.setText("La lezione e' stata aggiunta correttamente");
+        mex.setText("La lezione è stata aggiunta correttamente");
         mex.setStandardButtons(QMessageBox::Ok);
         mex.exec();
     }
@@ -349,7 +346,7 @@ void mainwindow::addGPL(){
     {
         QMessageBox mex;
         mex.setWindowTitle("Attenzione");
-        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non puo' durare 0 minuti");}
+        if(min==0){mex.setText("Completare tutti i campi. Attenzione: la lezione non può durare 0 minuti");}
         else if(traini==0){mex.setText("Completare tutti i campi. Attenzione: minimo 1 traino");}
         else{mex.setText("Completare tutti i campi");}
         mex.setStandardButtons(QMessageBox::Ok);

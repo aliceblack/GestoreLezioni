@@ -112,17 +112,17 @@ void DataBase::load(){
                 {
                      if(tipo==1 && t_acro)
                      {
-                         lez= new PPL(1,id,studente,velivolo,istruttore,minuti,pagata,acrobatico,0);
+                         lez= new PPL(id,studente,velivolo,istruttore,minuti,pagata,acrobatico,0);
                          db.add(lez);
                      }
                      if(tipo==2)
                      {
-                        lez=new VDS(2,id,studente,velivolo,istruttore,minuti,pagata);
+                        lez=new VDS(id,studente,velivolo,istruttore,minuti,pagata);
                         db.add(lez);
                      }
                      if(tipo==3 && t_traini)
                      {
-                        lez=new GPL(3,id,studente,velivolo,istruttore,minuti,pagata,0,traini);
+                        lez=new GPL(id,studente,velivolo,istruttore,minuti,pagata,0,traini);
                         db.add(lez);
                      }
                 }

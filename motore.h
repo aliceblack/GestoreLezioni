@@ -4,7 +4,7 @@
 
 class Motore: public Lezione{
 public:
-    Motore(int ti,int id, QString st, QString vel, bool ist, int m, bool pag, bool acro=0, int tra=0);
+    Motore(int id, QString st, QString vel, bool ist, int m, bool pag, bool acro=0, int tra=0);
     virtual ~Motore();
     virtual double costoBenzina()const=0;
     virtual void saveLezione(QXmlStreamWriter& xmlWriter)const=0;

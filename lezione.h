@@ -5,7 +5,6 @@
 
 class Lezione{
 private:
-    int tipo;
     int id;
     QString studente;
     QString velivolo; //immatricolazione enac (o estero)
@@ -15,9 +14,9 @@ private:
     bool acrobatico;
     int traini;
 public:
-    Lezione(int tipo, int id, QString st, QString vel, bool ist, int m, bool pag, bool acro=0, int traini=0);
+    Lezione(int id, QString st, QString vel, bool ist, int m, bool pag, bool acro=0, int traini=0);
     virtual ~Lezione();
-    int getTipo()const;
+    virtual int getTipo()const=0;
     int getId()const;
     QString getStudente()const;
     QString getVelivolo()const;
